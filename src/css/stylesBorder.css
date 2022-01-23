@@ -1,0 +1,16 @@
+/* Border */
+.borderLeft {
+	border-left: solid black 1px;
+}
+.borderRight {
+	border-right: solid black 1px;
+}
+.borderBottom {
+	border-bottom: solid black 1px;	
+}
+.borderTest {
+	border: solid black 1px;
+}
+.borderCollapse {
+	border-collapse: separate;
+}

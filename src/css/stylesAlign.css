@@ -1,0 +1,38 @@
+/* Align */
+.alignCenter {
+	text-align: center;
+}
+
+.alignLeft {
+	text-align: left;
+}
+
+.alignRight {
+	text-align: right;
+}
+
+.alignVerticaly {
+	display: table-cell;
+    vertical-align: middle;
+}
+.justifyText {
+  text-align: justify;
+}
+.spaceBetween {
+	display:flex;
+    justify-content: space-between;
+}
+.justifyContentCenter {
+	display:flex;
+    justify-content: center;
+}
+
+/* Box shadow */
+.boxShadowInput {
+	box-shadow: inset 0 0 2px #000000;
+}
+
+.spaceAround {
+    display: flex;
+    justify-content: space-around;
+}
