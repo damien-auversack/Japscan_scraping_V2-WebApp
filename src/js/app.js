@@ -1,6 +1,6 @@
 let eventRefresh = document.querySelector('#eventRefresh');
 let cards_wrap = document.querySelector(".cards_wrap");
-const url = "https://japscan-scraping-v2.herokuapp.com/";
+const url = "https://japscan-scraping-v2-server.herokuapp.com/";
 
 function disabledButton(selectElement, durationSecond) {
     selectElement.disabled = true;
