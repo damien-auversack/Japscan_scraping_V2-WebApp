@@ -1,4 +1,4 @@
-# Japscan_scraping_V2-Server | Projet personnel | [FR]
+# Japscan_scraping_V2-WebApp | Projet personnel | [FR]
 ## Informations
 
 Ce repository est la partie Web-App du projet.
