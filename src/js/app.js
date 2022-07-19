@@ -1,17 +1,23 @@
 let eventRefresh = document.querySelector('#eventRefresh');
 let cards_wrap = document.querySelector(".cards_wrap");
+
+let isAllMangasButton = document.getElementById("isAllMangas");
+
+let isAllMangas = false; 
+
 // Local Url
 // http://127.0.0.1:8000/
+// const url = "http://127.0.0.1:5001/";
 
 // Online Url 
 const url = "https://japscan-scraping-v2-server.herokuapp.com/";
 
-function disabledButton(selectElement, durationSecond) {
+const disabledButton = (selectElement, durationSecond) => {
     selectElement.disabled = true;
     setTimeout(()=>selectElement.disabled = false, durationSecond * 1000);
-}
+};
 
-function startTimer(duration, display) {
+const startTimer = (duration, display) => {
     var timer = duration, seconds;
     objInterval = setInterval(function () {
         seconds = parseInt(timer % 60, 10);
@@ -22,27 +28,39 @@ function startTimer(duration, display) {
             clearInterval(objInterval)
         }
     }, 1000);
-}
+};
+
+isAllMangasButton.addEventListener('click', ()=> {
+    isAllMangas = isAllMangasButton.checked;
+})
 
 eventRefresh.addEventListener('click', () => {
     cards_wrap.innerHTML="";
 
-    startTimer(4, document.querySelector('#time'));
-    disabledButton(document.querySelector('#eventRefresh'), 6);
+    if(isAllMangas) {
+        startTimer(14, document.querySelector('#time'));
+        disabledButton(document.querySelector('#eventRefresh'), 15);
+    }else {
+        startTimer(9, document.querySelector('#time'));
+        disabledButton(document.querySelector('#eventRefresh'), 10);
+    }
 
     $.ajax({
         type: "GET",
         url: url,
+        data: { 
+            isAllMangas: isAllMangas
+        },
         success: function (manga) {
             manga = JSON.parse(manga);
-            manga.forEach((elt)=> {
-                cards_wrap.append(buildMangaCard(elt));
-            });  
+            manga.forEach(element => {
+                cards_wrap.append(buildMangaCard(element));
+            });           
         }
     });
 });
 
-function buildMangaCard(manga) {
+const buildMangaCard = (manga) => {
     let card_item = document.createElement("div");
     card_item.classList.add("card_item");
 
@@ -57,7 +75,8 @@ function buildMangaCard(manga) {
     imgContainer.setAttribute("href", manga.urlJapscan);
     let img = document.createElement("img");
     img.classList.add("radius-2", "mb-1", "cursorPointer");
-    img.setAttribute("src", manga.urlImage);
+
+    img.setAttribute("src", manga.urlImage||"");
     img.setAttribute("alt", "Pas d'image");
     imgContainer.appendChild(img);
 
@@ -69,7 +88,7 @@ function buildMangaCard(manga) {
     synopsisContainer.classList.add("justifyText", "pb-2", "pr-2", "pl-2");
 
     let synopsisContent = document.createElement("span");
-    synopsisContent.appendChild(document.createTextNode(manga.synopsis));
+    synopsisContent.appendChild(document.createTextNode(manga.synopsis || "pas de synopsis"));
     synopsisContainer.appendChild(synopsisContent);
 
     card_inner.appendChild(titre);
@@ -80,4 +99,4 @@ function buildMangaCard(manga) {
     card_item.appendChild(card_inner);
 
     return card_item;
-}
+};
