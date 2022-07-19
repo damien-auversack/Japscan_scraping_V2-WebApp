@@ -48,9 +48,6 @@ eventRefresh.addEventListener('click', () => {
     $.ajax({
         type: "GET",
         url: url,
-        data: { 
-            isAllMangas: isAllMangas
-        },
         success: function (manga) {
             manga = JSON.parse(manga);
             manga.forEach(element => {
