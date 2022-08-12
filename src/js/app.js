@@ -7,10 +7,10 @@ let isAllMangas = false;
 
 // Local Url
 // http://127.0.0.1:8000/
-const url = "http://127.0.0.1:5001/";
+// const url = "http://127.0.0.1:5001/";
 
 // Online Url 
-// const url = "https://japscan-scraping-v2-server.herokuapp.com/";
+const url = "https://japscan-scraping-v2-server.herokuapp.com/";
 
 const disabledButton = (selectElement, durationSecond) => {
     selectElement.disabled = true;
