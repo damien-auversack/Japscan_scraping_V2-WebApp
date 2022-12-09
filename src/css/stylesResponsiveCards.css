@@ -23,7 +23,7 @@
 .cards_wrap .card_inner{
 	border-radius: 5px;
 	min-width: 225px;
-	min-height: 315px; 
+	min-height: 430px; 
 	width: 100%;
 }
 @media screen and (max-width: 1024px){
